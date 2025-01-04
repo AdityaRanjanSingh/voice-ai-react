@@ -4,9 +4,7 @@ import styles from "@/styles/Console.module.css";
 import Prompt from "src/components/Dropdown/Prompt";
 import promptOptions from "src/promptOptions.js";
 
-function Console({
-  userMediaStream: userMediaStream,
-}) {
+function Console({ userMediaStream: userMediaStream }) {
   // Joanna, Kendra, Kimberly, Salli, Joey, Matthew, Ruth, Stephen
   const voiceNames = {
     label: "Amazon Polly",
@@ -91,9 +89,7 @@ function Console({
   const [rerender, setRerender] = useState(0);
 
   // This is a stored prompt that is used to generate new sessions
-  const selectedPrompt = useRef(
-    promptOptions[0].prompt
-    );
+  const selectedPrompt = useRef(promptOptions[0].prompt);
 
   const promptSettings = useRef({
     personalityOptions: [
@@ -126,7 +122,7 @@ function Console({
         label: "None",
         value: "",
         enabled: true,
-      }
+      },
     ],
     feedback: true,
   });
@@ -189,8 +185,7 @@ function Console({
   }
 
   function resetPrompt() {
-    const { personalityOptions } =
-      promptSettings.current;
+    const { personalityOptions } = promptSettings.current;
     let interviewerPersonality = "";
     const enabledPersonalities = personalityOptions.filter(
       (option) => option.enabled
@@ -203,18 +198,12 @@ function Console({
       // If personality is "", then the interviewer will not have a personality
       if (personalityStr != "") {
         interviewerPersonality = `Your personality type is ${personalityStr}.`;
-    } else {
-      interviewerPersonality =
-        "";
+      } else {
+        interviewerPersonality = "";
+      }
     }
-  }
 
-    const prompt = [
-      {
-        role: "system",
-        content: `${selectedPrompt.current} ${interviewerPersonality}`,
-      },
-    ];
+    const prompt = [];
 
     sessionMessages.current = prompt;
     setRerender(rerender + 1);
@@ -250,17 +239,17 @@ function Console({
           return;
         }
         setActivityDetection(1);
-        if(currentRecording != null){
+        if (currentRecording != null) {
           clear();
         }
         currentRecording = collectAudio();
       }
 
       function clear() {
-        if(currentRecording != null){
+        if (currentRecording != null) {
           currentRecording.cancel();
-        currentRecording = null;
-      }
+          currentRecording = null;
+        }
       }
 
       return {
@@ -688,10 +677,7 @@ function Console({
           })}
         </div>
 
-         <form
-          onSubmit={handleTextSubmit}
-          className={styles.Form}
-        >
+        <form onSubmit={handleTextSubmit} className={styles.Form}>
           <input
             placeholder="Type here..."
             type="text"
@@ -700,7 +686,7 @@ function Console({
             disabled={activityDetection === 2}
             onChange={handleInputChange}
           />
-        </form> 
+        </form>
       </div>
 
       <Toolbar

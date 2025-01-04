@@ -24,7 +24,7 @@ const Toolbar = ({
 }) => {
   return (
     <div className={styles.Toolbar}>
-      <Dropdown
+      {/* <Dropdown
         currentSession={currentSession}
         detectionSettings={detectionSettings}
         setDetectionSettings={setDetectionSettings}
@@ -42,18 +42,18 @@ const Toolbar = ({
         micQuiet={micQuiet}
         resetPlaceholderPrompt={resetPlaceholderPrompt}
         promptSettings={promptSettings}
-      ></Dropdown>
+      ></Dropdown> */}
       <Microphone
         activityDetection={activityDetection}
         handleMicrophoneSubmit={handleMicrophoneSubmit}
       />
-      <Prompt
+      {/* <Prompt
         selectedPrompt={selectedPrompt}
         rerender={rerender}
         setRerender={setRerender}
         promptOpen={promptOpen}
         setPromptOpen={setPromptOpen}
-      />
+      /> */}
     </div>
   );
 };
