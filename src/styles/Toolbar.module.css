@@ -31,7 +31,7 @@
   color: var(--blackA10);
 }
 
-.ToolbarButtonMicrophone
+/* .ToolbarButtonMicrophone
 {
   background: var(--iconBackgroundColor);
   color: var(--iconColor);
@@ -46,6 +46,6 @@
     }
 
 
-    .ToolbarButtonMicrophone:hover {
-      background-color: var(--blackA3);
-      color: var(--blackA10);}
+    .ToolbarButtonMicrophone:hover { */
+      /* background-color: var(--blackA3);
+      color: var(--blackA10);} */

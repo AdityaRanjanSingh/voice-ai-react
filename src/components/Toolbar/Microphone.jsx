@@ -10,22 +10,22 @@ const Microphone = ({
 
   switch (activityDetection) {
     case 1:
-      borderStyle = "3px solid orange";
+      borderStyle = "border-1	 border-solid	 border-amber-200	";
       break;
     case 2:
-      borderStyle = "3px solid red";
+      borderStyle = "border-1	 border-solid	 border-red-600	";
       break;
     case 3:
-      borderStyle = "3px solid var(--blackA10);";
+      borderStyle = "border-1	 border-solid	 border-slate-500	";
       break;
     default:
-      borderStyle = "";
+      borderStyle = "border-0	";
       break;
   }
 
   return (
     <Button
-      className={styles.ToolbarButtonMicrophone}
+      className={`${borderStyle}`}
       isIconOnly
       onPress={(e) => handleMicrophoneSubmit(e)}
       aria-label="Turn on mic"
