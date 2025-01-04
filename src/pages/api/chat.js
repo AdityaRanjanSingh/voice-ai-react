@@ -32,7 +32,6 @@ export default async function handler(req, res) {
   //  console.log("Received request with body:", req.body);
 
   sessionResponse.messages = req.body.messages;
-  console.log({ messages: req.body.messages });
   // if (req.body.audio) {
   //   const audio = req.body.audio;
   //   const base64 = audio.split(",")[1];
@@ -59,13 +58,12 @@ export default async function handler(req, res) {
   //           data.audioDataURI = audioDataURI;
 
   //           sessionResponse.audio = data;
-  res.status(200).json(sessionResponse);
 
   const getAssistantResponse = async () => {
     {
       const emptyThread = await openai.beta.threads.create();
-      return new Promise((resolve, reject) => {
-        const run = openai.beta.threads.runs
+      return new Promise(async (resolve, reject) => {
+        await openai.beta.threads.runs
           .stream(emptyThread.id, {
             assistant_id: "asst_yrpXQAG0Jf88t3pyirrSisUD",
           })
@@ -77,17 +75,35 @@ export default async function handler(req, res) {
     }
   };
 
-  return Effect.runPromise(
+  // res.status(200).json(sessionResponse);
+
+  return await Effect.runPromise(
     pipe(
-      Effect.sync(() => Effect.log("Starting Run")),
+      Effect.log("Starting Run", sessionResponse),
       Effect.andThen(() =>
         Effect.tryPromise({
-          try: getAssistantResponse(),
-          catch: (error) => new Error("Error", error),
+          try: () => getAssistantResponse(),
+          catch: (error) => Effect.logError(error),
         })
       ),
       Effect.tap((response) => Effect.log("Response", response)),
-      Effect.andThen((response) => {})
+      Effect.andThen((response) =>
+        sessionResponse.messages.push({
+          ...response,
+          content: response.content[0]["text"]["value"],
+        })
+      ),
+      Effect.tap(() => Effect.log("SessionResponse", sessionResponse)),
+      Effect.andThen((response) => ({
+        ...sessionResponse,
+        chatResponse: [
+          {
+            role: response.role,
+            content: response.content,
+          },
+        ],
+      })),
+      Effect.andThen((response) => res.status(200).json(response))
     )
   );
 

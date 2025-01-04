@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import Toolbar from "src/components/Toolbar/Toolbar";
+import Toolbar from "@/components/Toolbar/Toolbar";
 import styles from "@/styles/Console.module.css";
-import Prompt from "src/components/Dropdown/Prompt";
-import promptOptions from "src/promptOptions.js";
+import Prompt from "@/components/Dropdown/Prompt";
+import promptOptions from "@/promptOptions";
 
 function Console({ userMediaStream: userMediaStream }) {
   // Joanna, Kendra, Kimberly, Salli, Joey, Matthew, Ruth, Stephen
@@ -557,7 +557,7 @@ function Console({ userMediaStream: userMediaStream }) {
                         <i>Your message is being transcribed.</i>
                       </span>
                     ) : (
-                      <>User:&nbsp;{message.content}</>
+                      <h1>User:&nbsp;{message.content}</h1>
                     )}
                   </span>
                   {message.audio && (
@@ -597,7 +597,7 @@ function Console({ userMediaStream: userMediaStream }) {
                     {message.loading ? (
                       <i>Assistant's response is being generated.</i>
                     ) : (
-                      <>Assistant:&nbsp;{message.content}</>
+                      <h1>Assistant:&nbsp;{message.content}</h1>
                     )}
                   </span>
                   {message.audio && (

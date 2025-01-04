@@ -1,7 +1,7 @@
 import styles from "@/styles/Toolbar.module.css";
-import Microphone from "src/components/toolbar/Microphone";
-import Prompt from "src/components/toolbar/Prompt";
-import Dropdown from "src/components/Dropdown/Dropdown";
+import Microphone from "@/components/Toolbar/Microphone";
+import Prompt from "@/components/Toolbar/Prompt";
+import Dropdown from "@/components/Dropdown/Dropdown";
 
 const Toolbar = ({
   activityDetection: activityDetection,

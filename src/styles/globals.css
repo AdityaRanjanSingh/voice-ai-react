@@ -1,6 +1,8 @@
 @import '@radix-ui/colors/blackA.css';
 @import '@radix-ui/colors/whiteA.css';
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /* reset */
 button,
 fieldset,
@@ -99,9 +101,9 @@ body {
   background: rgb(248, 248, 250);
 }
 
-body {
+/* body {
   color: rgb(var(--foreground-rgb));
-}
+} */
 
 a {
   color: inherit;
