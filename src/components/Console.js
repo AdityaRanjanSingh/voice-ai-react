@@ -171,7 +171,7 @@ function Console({ userMediaStream: userMediaStream, threadId }) {
   }
 
   function handleMicrophoneSubmit(event) {
-    event.preventDefault();
+    // event.preventDefault();
 
     if (currentSession.current == null) {
       currentSession.current = interview();

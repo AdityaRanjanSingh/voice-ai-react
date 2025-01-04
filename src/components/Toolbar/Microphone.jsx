@@ -1,7 +1,7 @@
 import React from "react";
 import { Mic } from "react-feather";
 import styles from "@/styles/Toolbar.module.css";
-
+import { Button } from "@nextui-org/react";
 const Microphone = ({
   activityDetection: activityDetection,
   handleMicrophoneSubmit: handleMicrophoneSubmit,
@@ -24,17 +24,16 @@ const Microphone = ({
   }
 
   return (
-    <div
+    <Button
       className={styles.ToolbarButtonMicrophone}
-      style={{
-        border: borderStyle,
-      }}
-      onClick={handleMicrophoneSubmit}
+      isIconOnly
+      onPress={(e) => handleMicrophoneSubmit(e)}
+      aria-label="Turn on mic"
+      color="warning"
+      variant="faded"
     >
-      <div style={{ lineHeight: 1, display: "flex" }}>
-        <Mic size={24} />
-      </div>
-    </div>
+      <Mic size={24} />
+    </Button>
   );
 };
 

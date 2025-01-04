@@ -3,6 +3,7 @@ import styles from "@/styles/Home.module.css";
 import React, { useState, useEffect } from "react";
 import Console from "@/components/Console";
 import { useRouter } from "next/router";
+import BottomTabs from "@/components/BottomTabs";
 
 const MediaStreamWrapper = ({ children }) => {
   const [userMediaStream, setUserMediaStream] = useState(null);
@@ -70,18 +71,15 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main className={styles.main}>
-        <div className={styles.description}>
-          <MediaStreamWrapper>
-            {({ userMediaStream }) => (
-              <>
-                <Console
-                  userMediaStream={userMediaStream}
-                  threadId={router.query.id}
-                ></Console>
-              </>
-            )}
-          </MediaStreamWrapper>
-        </div>
+        <MediaStreamWrapper>
+          {({ userMediaStream }) => (
+            <Console
+              className="h-full"
+              userMediaStream={userMediaStream}
+              threadId={router.query.id}
+            ></Console>
+          )}
+        </MediaStreamWrapper>
       </main>
     </>
   );
