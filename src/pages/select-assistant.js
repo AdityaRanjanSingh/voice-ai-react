@@ -6,6 +6,27 @@ import { useRouter } from "next/navigation";
 
 export default function Home() {
   const router = useRouter();
+  const controller = new AbortController();
+  const signal = controller.signal;
+  const onAssistantPress = () => {
+    fetch("/api/thread", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(),
+      signal, // Pass the signal option to the fetch request
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((response) => {
+        router.push(`/threads/${response.thread.id}`);
+      });
+  };
 
   const [assistants, setAssistants] = useState([
     {
@@ -27,7 +48,7 @@ export default function Home() {
             <AssistantCard
               key={index}
               item={item}
-              onPress={() => router.push("/thread")}
+              onPress={onAssistantPress}
             ></AssistantCard>
           ))}
         </div>

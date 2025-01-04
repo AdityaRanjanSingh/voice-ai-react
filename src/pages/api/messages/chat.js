@@ -1,4 +1,3 @@
-import { runThread } from "@/utils/run-thread";
 import { Effect, pipe } from "effect";
 
 const AWS = require("aws-sdk");
@@ -58,6 +57,22 @@ export default async function handler(req, res) {
 
   //           sessionResponse.audio = data;
 
+  const getAssistantResponse = async () => {
+    {
+      const emptyThread = await openai.beta.threads.create();
+      return new Promise(async (resolve, reject) => {
+        await openai.beta.threads.runs
+          .stream(emptyThread.id, {
+            assistant_id: "asst_yrpXQAG0Jf88t3pyirrSisUD",
+          })
+          .on("messageDone", (data) => {
+            console.log("messageDone", JSON.stringify({ data }));
+            resolve(data);
+          });
+      });
+    }
+  };
+
   // res.status(200).json(sessionResponse);
 
   return await Effect.runPromise(
@@ -65,21 +80,7 @@ export default async function handler(req, res) {
       Effect.log("Starting Run", sessionResponse),
       Effect.andThen(() =>
         Effect.tryPromise({
-          try: () =>
-            openai.beta.threads.messages.create(sessionResponse.threadId, {
-              role: sessionResponse.messages[
-                sessionResponse.messages.length - 1
-              ].role,
-              content:
-                sessionResponse.messages[sessionResponse.messages.length - 1]
-                  .content,
-            }),
-          catch: (error) => Effect.logError(error),
-        })
-      ),
-      Effect.andThen(() =>
-        Effect.tryPromise({
-          try: () => runThread(sessionResponse.threadId),
+          try: () => getAssistantResponse(),
           catch: (error) => Effect.logError(error),
         })
       ),

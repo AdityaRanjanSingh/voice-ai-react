@@ -4,7 +4,7 @@ import styles from "@/styles/Console.module.css";
 import Prompt from "@/components/Dropdown/Prompt";
 import promptOptions from "@/promptOptions";
 
-function Console({ userMediaStream: userMediaStream }) {
+function Console({ userMediaStream: userMediaStream, threadId }) {
   // Joanna, Kendra, Kimberly, Salli, Joey, Matthew, Ruth, Stephen
   const voiceNames = {
     label: "Amazon Polly",
@@ -298,6 +298,7 @@ function Console({ userMediaStream: userMediaStream }) {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
+            threadId,
             voiceId: voiceId.current,
             audio: audio ? audio : null,
             messages: (() => {
