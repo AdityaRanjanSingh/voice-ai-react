@@ -1,10 +1,11 @@
 import React from "react";
-import { Mic, Briefcase } from "react-feather";
+import { Briefcase, Heart } from "react-feather";
 import styles from "@/styles/Toolbar.module.css";
 import { Button } from "@nextui-org/react";
 const Microphone = ({
   activityDetection: activityDetection,
   handleMicrophoneSubmit: handleMicrophoneSubmit,
+  selected,
 }) => {
   let borderStyle;
 
@@ -16,23 +17,22 @@ const Microphone = ({
       borderStyle = "border-1	 border-solid	 border-red-600	";
       break;
     case 3:
-      borderStyle = "border-1	 border-solid	 border-slate-500	";
+      borderStyle = "border-1	 border-solid	 border-slate-500	back";
       break;
     default:
-      borderStyle = "border-0	";
+      borderStyle =
+        "border-1	border-solid border-slate-500 rounded-full h-15 w-15";
       break;
   }
 
   return (
     <Button
-      className={`${borderStyle}`}
       isIconOnly
       onPress={(e) => handleMicrophoneSubmit(e)}
       aria-label="Turn on mic"
-      color="warning"
-      variant="faded"
+      variant={selected ? "solid" : "faded"}
     >
-      <Mic size={24} />
+      <Briefcase className="m-2" size={30} />
     </Button>
   );
 };

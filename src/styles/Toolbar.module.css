@@ -1,13 +1,4 @@
-.Toolbar
-{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  margin-top: 16px;
-  position: relative;
-}
+
 
 .ToolbarButton
 {

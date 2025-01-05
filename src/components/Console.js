@@ -538,7 +538,7 @@ function Console({ userMediaStream: userMediaStream, threadId }) {
   }
 
   return (
-    <div>
+    <div className="flex-1">
       <div className={styles.Console}>
         <Prompt
           selectedPrompt={selectedPrompt}
