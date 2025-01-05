@@ -1,7 +1,7 @@
 import Head from "next/head";
-import styles from "@/styles/Home.module.css";
+import styles from "@/src/styles/Home.module.css";
 import React, { useState, useEffect } from "react";
-import AssistantCard from "@/components/AssistantCard";
+import AssistantCard from "@/src/components/AssistantCard";
 import { useRouter } from "next/navigation";
 
 export default function Home() {

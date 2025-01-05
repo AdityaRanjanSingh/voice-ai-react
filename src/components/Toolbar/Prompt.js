@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@/styles/Toolbar.module.css";
+import styles from "@/src/styles/Toolbar.module.css";
 import { FileText } from "react-feather";
 
 const Prompt = ({

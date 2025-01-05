@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { CheckIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 
-import styles from "@/styles/DropdownMenu.module.css";
+import styles from "@/src/styles/DropdownMenu.module.css";
 import ThresholdSlider from "/src/components/Dropdown/ThresholdSlider";
 import MicQuietSlider from "./MicQuietSlider";
 import { Settings } from "react-feather";

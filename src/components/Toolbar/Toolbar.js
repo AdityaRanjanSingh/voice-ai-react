@@ -1,10 +1,10 @@
-import styles from "@/styles/Toolbar.module.css";
-import Microphone from "@/components/Toolbar/Microphone";
-import Inspiration from "@/components/Toolbar/Inspiration";
-import Briefcase from "@/components/Toolbar/Wardrobe";
-import Prompt from "@/components/Toolbar/Prompt";
-import Dropdown from "@/components/Dropdown/Dropdown";
-import BottomTabs from "@/components/BottomTabs";
+import styles from "@/src/styles/Toolbar.module.css";
+import Microphone from "@/src/components/Toolbar/Microphone";
+import Inspiration from "@/src/components/Toolbar/Inspiration";
+import Briefcase from "@/src/components/Toolbar/Wardrobe";
+import Prompt from "@/src/components/Toolbar/Prompt";
+import Dropdown from "@/src/components/Dropdown/Dropdown";
+import BottomTabs from "@/src/components/BottomTabs";
 import { useRouter } from "next/router";
 const Toolbar = ({
   activityDetection: activityDetection,

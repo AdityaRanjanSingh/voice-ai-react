@@ -2,7 +2,7 @@ import { Tabs, Tab, Button } from "@nextui-org/react";
 import Microphone from "../Toolbar/Microphone";
 import { Mic } from "react-feather";
 
-import { CameraIcon, HeartIcon } from "@/icons";
+import { CameraIcon, HeartIcon } from "@/src/icons";
 
 export default function App({
   activityDetection,

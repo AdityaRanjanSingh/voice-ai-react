@@ -1,8 +1,8 @@
 import Head from "next/head";
-import styles from "@/styles/Home.module.css";
+import styles from "@/src/styles/Home.module.css";
 import React, { useState, useEffect } from "react";
-import ImageCard from "@/components/ImageCard";
-import FileUploader from "@/components/FileUploader";
+import ImageCard from "@/src/components/ImageCard";
+import FileUploader from "@/src/components/FileUploader";
 
 import { useRouter } from "next/navigation";
 import { Button } from "@nextui-org/react";

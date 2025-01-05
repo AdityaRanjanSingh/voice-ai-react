@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import Toolbar from "@/components/Toolbar/Toolbar";
-import styles from "@/styles/Console.module.css";
-import Prompt from "@/components/Dropdown/Prompt";
-import promptOptions from "@/promptOptions";
+import Toolbar from "@/src/components/Toolbar/Toolbar";
+import styles from "@/src/styles/Console.module.css";
+import Prompt from "@/src/components/Dropdown/Prompt";
+import promptOptions from "@/src/promptOptions";
 
 function Console({ userMediaStream: userMediaStream, threadId }) {
   // Joanna, Kendra, Kimberly, Salli, Joey, Matthew, Ruth, Stephen

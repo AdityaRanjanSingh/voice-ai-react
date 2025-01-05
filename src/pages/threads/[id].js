@@ -1,9 +1,9 @@
 import Head from "next/head";
-import styles from "@/styles/Home.module.css";
+import styles from "@/src/styles/Home.module.css";
 import React, { useState, useEffect } from "react";
-import Console from "@/components/Console";
+import Console from "@/src/components/Console";
 import { useRouter } from "next/router";
-import BottomTabs from "@/components/BottomTabs";
+import BottomTabs from "@/src/components/BottomTabs";
 
 const MediaStreamWrapper = ({ children }) => {
   const [userMediaStream, setUserMediaStream] = useState(null);

@@ -1,6 +1,6 @@
 import React from "react";
 import { Mic, Briefcase } from "react-feather";
-import styles from "@/styles/Toolbar.module.css";
+import styles from "@/src/styles/Toolbar.module.css";
 import { Button } from "@nextui-org/react";
 const Microphone = ({
   activityDetection: activityDetection,

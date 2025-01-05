@@ -1,4 +1,4 @@
-import "@/styles/globals.css";
+import "@/src/styles/globals.css";
 import { NextUIProvider } from "@nextui-org/react";
 
 // pages/_app.js

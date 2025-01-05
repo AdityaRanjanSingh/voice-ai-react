@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import * as Slider from "@radix-ui/react-slider";
-import styles from "@/styles/Slider.module.css";
+import styles from "@/src/styles/Slider.module.css";
 
 const MicQuietSlider = ({
   micQuiet: micQuiet,

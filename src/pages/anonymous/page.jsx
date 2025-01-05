@@ -1,10 +1,10 @@
 import { Button } from "@nextui-org/react";
-import styles from "@/styles/Home.module.css";
+import styles from "@/src/styles/Home.module.css";
 import Head from "next/head";
-import { auth } from "@/firebase";
+import { auth } from "@/src/firebase";
 import { useRouter } from "next/router";
 import { useContext } from "react";
-import AuthProvider, { AuthContext } from "@/providers/auth-provider";
+import AuthProvider, { AuthContext } from "@/src/providers/auth-provider";
 import { signInAnonymously } from "firebase/auth";
 
 export default () => {
