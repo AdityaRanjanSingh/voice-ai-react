@@ -7,14 +7,14 @@ import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import { AuthContext } from "@/src/providers/auth-provider";
 
-export default () => {
+export const Page = () => {
   const router = useRouter();
   const { signinAnonymously } = useContext(AuthContext);
   const onPressContinue = () => {
     signinAnonymously(auth)
       .then((value) => {
         console.log(value);
-        router.push("/select-assistant");
+        router.push("/assistants");
       })
       .catch((e) => console.error(e));
   };
@@ -29,3 +29,4 @@ export default () => {
     </main>
   );
 };
+export default Page;

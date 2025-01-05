@@ -4,7 +4,7 @@ import styles from "@/src/styles/Console.module.css";
 import Prompt from "@/src/components/Dropdown/Prompt";
 import promptOptions from "@/src/promptOptions";
 
-function Console({ userMediaStream: userMediaStream, threadId }) {
+function Console({ userMediaStream: userMediaStream, threadId, userId }) {
   // Joanna, Kendra, Kimberly, Salli, Joey, Matthew, Ruth, Stephen
   const voiceNames = {
     label: "Amazon Polly",
@@ -292,7 +292,7 @@ function Console({ userMediaStream: userMediaStream, threadId }) {
       // Fetch
 
       try {
-        fetch("/api/chat", {
+        fetch(`/api/${userId}/${threadId}/chat`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

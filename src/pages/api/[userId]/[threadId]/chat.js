@@ -1,6 +1,9 @@
-import { runThread } from "@/utils/run-thread";
+import { runThread } from "@/src/utils/run-thread";
 import { Effect, pipe } from "effect";
-
+import { getDocs } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import { auth, firestore } from "@/src/firebase";
+import * as zod from "zod";
 const AWS = require("aws-sdk");
 
 AWS.config.update({
@@ -23,13 +26,20 @@ const { OpenAI } = require("openai");
 const openai = new OpenAI();
 
 export default async function handler(req, res) {
-  const sessionResponse = {
-    threadId: req.body.threadId,
-    transcription: null,
-    chatResponse: null,
-    audioResponse: null,
-    messages: req.body.messages,
-  };
+  const parsed = zod
+    .object({
+      query: zod.object({
+        threadId: zod.string(),
+        userId: zod.string(),
+      }),
+      body: zod.object({
+        audio: zod.any().nullable(),
+        threadId: zod.string(),
+        voiceId: zod.any(),
+        messages: zod.array(zod.any()),
+      }),
+    })
+    .safeParse(req);
 
   // if (req.body.audio) {
   //   const audio = req.body.audio;
@@ -59,10 +69,16 @@ export default async function handler(req, res) {
   //           sessionResponse.audio = data;
 
   // res.status(200).json(sessionResponse);
-
+  const sessionResponse = {
+    threadId: parsed.data.query.threadId,
+    transcription: null,
+    chatResponse: null,
+    audioResponse: null,
+    messages: parsed.data.body.messages,
+  };
   return await Effect.runPromise(
     pipe(
-      Effect.log("Starting Run", sessionResponse),
+      Effect.sync(() => Effect.log("Starting Run", parsed.data)),
       Effect.andThen(() =>
         Effect.tryPromise({
           try: () =>

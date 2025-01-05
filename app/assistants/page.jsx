@@ -1,12 +1,14 @@
 "use client";
 import Head from "next/head";
 import styles from "@/src/styles/Home.module.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import AssistantCard from "@/src/components/AssistantCard";
 import { useRouter } from "next/navigation";
 import { auth } from "@/src/firebase";
+import { AuthContext } from "@/src/providers/auth-provider";
 
 export default function Home() {
+  const { user } = useContext(AuthContext);
   const router = useRouter();
   const controller = new AbortController();
   const signal = controller.signal;
@@ -26,7 +28,7 @@ export default function Home() {
         return response.json();
       })
       .then((response) => {
-        router.push(`/threads/${response.thread.id}`);
+        router.push(`/threads/${user.uid}/${response.thread.id}/chat`);
       });
   };
 

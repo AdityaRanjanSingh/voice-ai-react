@@ -3,7 +3,6 @@ import styles from "@/src/styles/Home.module.css";
 import React, { useState, useEffect } from "react";
 import Console from "@/src/components/Console";
 import { useRouter } from "next/router";
-import BottomTabs from "@/src/components/BottomTabs";
 
 const MediaStreamWrapper = ({ children }) => {
   const [userMediaStream, setUserMediaStream] = useState(null);
@@ -25,9 +24,9 @@ const MediaStreamWrapper = ({ children }) => {
 export default function Home() {
   const router = useRouter();
   useEffect(() => {
-    if (router.query.id) {
+    if (router.query.threadId && router.query.userId) {
       try {
-        fetch("/api/chat", {
+        fetch(`/api/${router.query.userId}/${router.query.threadId}/chat`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -61,7 +60,7 @@ export default function Home() {
           .catch((error) => {});
       } catch (error) {}
     }
-  }, [router.query.id]);
+  }, [router.query.userId,router.query.threadId]);
 
   return (
     <>
@@ -76,7 +75,8 @@ export default function Home() {
             <Console
               className="h-full"
               userMediaStream={userMediaStream}
-              threadId={router.query.id}
+              threadId={router.query.threadId}
+              userId={router.query.userId}
             ></Console>
           )}
         </MediaStreamWrapper>

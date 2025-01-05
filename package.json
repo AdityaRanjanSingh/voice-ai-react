@@ -24,6 +24,7 @@
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
     "firebase": "^11.1.0",
+    "firebase-admin": "^13.0.2",
     "formik": "^2.4.6",
     "framer-motion": "^11.15.0",
     "fs": "^0.0.1-security",
@@ -34,7 +35,8 @@
     "react-dropzone": "^14.3.5",
     "react-feather": "^2.0.10",
     "react-toastify": "^11.0.2",
-    "uuid": "^11.0.4"
+    "uuid": "^11.0.4",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
