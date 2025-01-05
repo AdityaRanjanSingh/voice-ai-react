@@ -5,11 +5,3 @@
   align-items: center;
   min-height: 100vh;
 }
-
-@media (max-width: 800px)
-{
-  .main
-{
-  justify-content: flex-start;
-}
-}

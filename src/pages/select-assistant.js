@@ -8,6 +8,21 @@ export default function Home() {
   const router = useRouter();
   const controller = new AbortController();
   const signal = controller.signal;
+  // useEffect(() => {
+  //   const checkAuth = () => {
+  //     auth.onAuthStateChanged((user) => {
+  //       if (user) {
+  //         setIsUserValid(true);
+  //         console.log("This is the logged in user", user);
+  //       } else {
+  //         console.log("no user found");
+  //         router.push("/");
+  //       }
+  //     });
+  //   };
+
+  //   checkAuth();
+  // }, []);
   const onAssistantPress = () => {
     fetch("/api/thread", {
       method: "POST",

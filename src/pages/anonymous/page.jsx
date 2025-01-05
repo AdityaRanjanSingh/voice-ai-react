@@ -1,0 +1,36 @@
+import { Button } from "@nextui-org/react";
+import styles from "@/styles/Home.module.css";
+import Head from "next/head";
+import { auth } from "@/firebase";
+import { useRouter } from "next/router";
+import { useContext } from "react";
+import AuthProvider, { AuthContext } from "@/providers/auth-provider";
+import { signInAnonymously } from "firebase/auth";
+
+export default () => {
+  const router = useRouter();
+
+  const onPressContinue = () => {
+    signInAnonymously(auth)
+      .then((value) => {
+        console.log(value);
+        router.push("/select-assistant");
+      })
+      .catch((e) => console.error(e));
+  };
+  return (
+    <>
+      <Head>
+        <title>voice-ai react</title>
+        <meta name="description" content="voice-ai react" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      <main className={`justify-center ${styles.main} m-5`}>
+        <h1 className="text-3xl text-center my-8 ">Choose an assistant</h1>
+        <Button onPress={onPressContinue} color="primary">
+          Continue
+        </Button>
+      </main>
+    </>
+  );
+};
