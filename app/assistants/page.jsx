@@ -38,7 +38,7 @@ export default function Home() {
   ]);
   return (
     <main className={styles.main}>
-      <div className="gap-2 grid">
+      <div className="gap-2 grid m-5">
         {assistants.map((item, index) => (
           <AssistantCard
             key={index}
