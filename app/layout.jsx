@@ -3,6 +3,7 @@ import { NextUIProvider } from "@nextui-org/react";
 import "@/src/styles/globals.css";
 import AuthProvider from "@/src/providers/auth-provider";
 import PrivateRoute from "@/src/providers/private-route";
+import { ToastContainer } from "react-toastify";
 
 export default function DashboardLayout({ children }) {
   return (
@@ -15,6 +16,7 @@ export default function DashboardLayout({ children }) {
             <NextUIProvider>
               <AuthProvider>
                 <PrivateRoute>{children}</PrivateRoute>
+                <ToastContainer />
               </AuthProvider>
             </NextUIProvider>
           }
