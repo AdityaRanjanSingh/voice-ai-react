@@ -13,7 +13,7 @@ export default function Home() {
   const controller = new AbortController();
   const signal = controller.signal;
   const onAssistantPress = () => {
-    fetch("/api/thread", {
+    fetch(`/api/threads/${user.uid}/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
